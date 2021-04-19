@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="VatanBilgisayarMobil.Views.NotebookPage"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             Title="Notebook">
+	<NavigationPage.TitleView>
+		<AbsoluteLayout BackgroundColor="{StaticResource NavigationPrimary}" HorizontalOptions="FillAndExpand">
+			<Frame CornerRadius="10" Padding="0" >
+				<SearchBar x:Name="ürünAraması" Placeholder="Ürüm Ara" TextChanged="ürünAraması_TextChanged"/>
+			</Frame>
+		</AbsoluteLayout>
+	</NavigationPage.TitleView>
+	<ContentPage.Content>
+		<StackLayout>
+			<StackLayout Orientation="Horizontal" BackgroundColor="{DynamicResource NavigationPrimary}">
+				<Button Text="FİLTRELER" x:Name="Filtre" Clicked="Filtre_Clicked" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="FillAndExpand" />
+				<Button  x:Name="AdetLabel" Text="3 ADET" BackgroundColor="Transparent" TextColor="White" HorizontalOptions="FillAndExpand"/>
+			</StackLayout>
+			<StackLayout x:Name="FiltreMenusu"  IsVisible="False">
+				<StackLayout Orientation="Horizontal">
+					<Entry x:Name="Minimum" Placeholder="Minimum Fiyat" HorizontalOptions="Fill" Keyboard="Numeric" />
+					<Entry x:Name="Maksimum" Placeholder="Maximum Fiyat" HorizontalOptions="Fill" Keyboard="Numeric" />
+					<Button Text="Filtrele" x:Name="Onayla" Clicked="Onayla_Clicked" BackgroundColor="Transparent"/>
+				</StackLayout>
+				<StackLayout Orientation="Horizontal">
+					<Label Text="Marka:" XAlign="Center"  YAlign="Center" FontSize="Medium"/>
+					<Picker x:Name="picker" Title="TÜMÜ"  WidthRequest="100" SelectedIndexChanged="picker_SelectedIndexChanged" />
+				</StackLayout>
+				<StackLayout x:Name="OrderTypesRBTN" Orientation="Horizontal">
+					<RadioButton x:Name="Azalan" Text="{Binding TextString}" HorizontalOptions="Fill" CheckedChanged="RadioButton_CheckedChanged"/>
+					<RadioButton x:Name="Artan" Text="{Binding TextString}" HorizontalOptions="Fill" CheckedChanged="RadioButton_CheckedChanged"/>
+				</StackLayout>
+			</StackLayout>
+			<ScrollView>
+				<StackLayout>
+					<StackLayout>
+						<flv:FlowListView x:Name="ÖneÇıkanÜrünlerFLV"   FlowColumnCount="2"  SeparatorVisibility="Default" HasUnevenRows="True"  
+							   FlowItemsSource="{Binding Items}" FlowItemTapped="ÜrünTapped" HeightRequest="1250" RowHeight="260">
+							<flv:FlowListView.FlowColumnTemplate>
+								<DataTemplate>
+									<Frame BackgroundColor="White" BorderColor="#E0E0E0" CornerRadius="0" >
+										<StackLayout Spacing="1">
+											<Image Source="{ Binding ImageSource} " HeightRequest="150"/>
+											<Label HorizontalOptions="Fill" TextColor="DarkGray"
+												XAlign="Center"  YAlign="Center"  Text="{Binding Name}"/>
+											<Label HorizontalOptions="Fill"  FontAttributes="Bold"
+													XAlign="Center"  YAlign="Center"  Text="{Binding Info }"/>
+											<Label HorizontalOptions="Fill"    TextColor="{StaticResource NavigationPrimary}"
+													XAlign="Center" YAlign="Center" >
+												<Label.FormattedText>
+													<FormattedString>
+														<Span Text="₺"  FontSize="Medium" FontAttributes="Bold"/>
+														<Span FontSize="Large" Text="{Binding Cost,Converter={StaticResource CostToString}}" FontAttributes="Bold"/>
+													</FormattedString>
+												</Label.FormattedText>
+											</Label>
+										</StackLayout>
+									</Frame>
+								</DataTemplate>
+							</flv:FlowListView.FlowColumnTemplate>
+						</flv:FlowListView>
+					</StackLayout>
+				</StackLayout>
+			</ScrollView>
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

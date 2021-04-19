@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="VatanBilgisayarMobil.Views.MenuPage"
+             Title="Menu">
+             
+    <StackLayout VerticalOptions="FillAndExpand">
+		<StackLayout x:Name="GirisSL" BackgroundColor="#1565C1" Orientation="Horizontal" IsVisible="{Binding Converter={StaticResource girisYapilmadiMi}}">
+            <Image Source="UyeGirisi.png" HeightRequest="30" Margin="10,0,0,0"/>
+            <Button x:Name="ÜyeOlButton" Text="Üye Girişi" TextColor="White" Clicked="ÜyeOlButton_Clicked" BackgroundColor="#1565C1" Margin="-10,0,0,0"/>
+		</StackLayout>
+		<StackLayout x:Name="HesabımSL" BackgroundColor="#1565C1" Orientation="Horizontal" IsVisible="{Binding  Converter={StaticResource girisYapildiMi}}">
+			<Image Source="UyeGirisi.png" HeightRequest="30" Margin="10,0,0,0"/>
+			<Button x:Name="Hesabım" Text="Hesabım" TextColor="White" Clicked="Hesabım_Clicked" BackgroundColor="#1565C1" Margin="-10,0,0,0"/>
+		</StackLayout>
+		<ListView x:Name="ListViewMenu"
+                    HasUnevenRows="True">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                    <x:String>Item 3</x:String>
+                    <x:String>Item 4</x:String>
+                    <x:String>Item 5</x:String>
+                    <x:String>Item 6</x:String>
+                    <x:String>Item 7</x:String>
+                    <x:String>Item 8</x:String>
+                    <x:String>Item 9</x:String>
+                    <x:String>Item 10</x:String>
+                    <x:String>Item 11</x:String>
+                    <x:String>Item 12</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+						<StackLayout Padding="10" Orientation="Horizontal">
+							<Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

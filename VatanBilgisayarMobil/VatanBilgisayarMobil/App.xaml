@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:local="clr-namespace:VatanBilgisayarMobil.Converter"
+			 mc:Ignorable="d"
+             x:Class="VatanBilgisayarMobil.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+			<local:CostToStringConverter x:Key="CostToString" />
+			<local:IntToStringConverter x:Key="IntToString" />
+			<local:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
+			<local:GirisYapildiConverter x:Key="girisYapildiMi" />
+			<local:GirisYapilmadiConverter x:Key="girisYapilmadiMi" />
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#1565C1</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>
